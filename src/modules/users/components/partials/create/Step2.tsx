@@ -31,7 +31,7 @@ const CreateUserStep2 = forwardRef((props: CreateUserStep2Props, ref: Ref<FormSt
       })
       .required(t('common:field_required')),
   });
-  const defaultValues: Omit<CreateOneInput, 'email' | 'password'> = {
+  const defaultValues: Omit<CreateOneInput, 'fullName' | 'email' | 'password'> = {
     role: data?.role || ROLE.USER,
   };
   useImperativeHandle(ref, () => ({

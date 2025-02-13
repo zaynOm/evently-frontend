@@ -13,6 +13,7 @@
   "list": {
     "created_at": "Fecha de registro",
     "email": "Correo electrónico",
+    "full_name": "Nombre completo",
     "role": "Admin"
   }
 }

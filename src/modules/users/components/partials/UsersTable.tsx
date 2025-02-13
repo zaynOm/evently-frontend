@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 
 interface Row extends CrudRow {
+  fullName: string;
   email: string;
   createdAt: string;
   roles: string[];
@@ -24,6 +25,11 @@ const UsersTable = () => {
       field: 'id',
       headerName: 'ID',
       width: 100,
+    },
+    {
+      field: 'fullName',
+      headerName: t('user:list.full_name'),
+      flex: 1,
     },
     {
       field: 'email',
@@ -61,6 +67,7 @@ const UsersTable = () => {
   const itemToRow = (item: User): Row => {
     return {
       id: item.id,
+      fullName: item.fullName,
       email: item.email,
       createdAt: item.createdAt,
       roles: item.rolesNames,

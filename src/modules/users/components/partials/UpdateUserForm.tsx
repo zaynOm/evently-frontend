@@ -17,6 +17,7 @@ const UpdateUserForm = (props: UpdateUserFormProps) => {
   const { item } = props;
   const { t } = useTranslation(['common']);
   const schema = Yup.object().shape({
+    fullName: Yup.string().required(t('common:field_required')),
     email: Yup.string()
       .email(t('common:email_format_incorrect'))
       .required(t('common:field_required')),
@@ -30,6 +31,7 @@ const UpdateUserForm = (props: UpdateUserFormProps) => {
       .required(t('common:field_required')),
   });
   const defaultValues: UpdateOneInput = {
+    fullName: item.fullName,
     email: item.email,
     password: '',
     role: item.rolesNames[0],
@@ -44,6 +46,9 @@ const UpdateUserForm = (props: UpdateUserFormProps) => {
         defaultValues={defaultValues}
       >
         <Grid container spacing={3} sx={{ padding: 6 }}>
+          <Grid item xs={6}>
+            <RHFTextField name="fullName" label={t('common:full_name')} />
+          </Grid>
           <Grid item xs={6}>
             <RHFTextField name="email" label={t('common:email')} />
           </Grid>

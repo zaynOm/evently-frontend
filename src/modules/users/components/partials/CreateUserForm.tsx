@@ -16,6 +16,7 @@ interface CreateUserFormProps {}
 const CreateUserForm = (_props: CreateUserFormProps) => {
   const router = useRouter();
   const schema = Yup.object().shape({
+    fullName: Yup.string().required('Le champ est obligatoire'),
     email: Yup.string()
       .email("Le format de l'email est incorrect")
       .required('Le champ est obligatoire'),
@@ -29,6 +30,7 @@ const CreateUserForm = (_props: CreateUserFormProps) => {
       .required('Le champ est obligatoire'),
   });
   const defaultValues: CreateOneInput = {
+    fullName: '',
     email: '',
     password: '',
     role: ROLE.USER,
@@ -52,6 +54,9 @@ const CreateUserForm = (_props: CreateUserFormProps) => {
         onPostSubmit={onPostSubmit}
       >
         <Grid container spacing={3} sx={{ padding: 6 }}>
+          <Grid item xs={6}>
+            <RHFTextField name="fullName" label="Nom Complet" />
+          </Grid>
           <Grid item xs={6}>
             <RHFTextField name="email" label="Email" />
           </Grid>

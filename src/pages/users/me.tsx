@@ -18,6 +18,7 @@ const MyProfile: NextPage = () => {
   const { updateOne } = useUsers();
 
   const ProfileSchema = Yup.object().shape({
+    fullName: Yup.string().max(255, 'Le champ est trop long.').required('Le champ est obligatoire'),
     email: Yup.string()
       .max(191, 'Le champ est trop long.')
       .email("Le format de l'email est incorrect")
@@ -28,6 +29,7 @@ const MyProfile: NextPage = () => {
   const methods = useForm<UpdateOneInput>({
     resolver: yupResolver(ProfileSchema),
     defaultValues: {
+      fullName: user?.fullName || '',
       email: user?.email || '',
       password: '',
       role: user?.rolesNames[0],
@@ -53,6 +55,9 @@ const MyProfile: NextPage = () => {
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Grid container rowSpacing={3} columnSpacing={2} sx={{ padding: 5 }}>
             <Grid item xs={12}>
+              <RHFTextField name="fullName" label="Nom complet" />
+            </Grid>
+            <Grid item xs={12}>
               <RHFTextField name="email" label="Email" />
             </Grid>
             <Grid item xs={12}>
@@ -76,7 +81,6 @@ const MyProfile: NextPage = () => {
     </>
   );
 };
-
 
 export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {

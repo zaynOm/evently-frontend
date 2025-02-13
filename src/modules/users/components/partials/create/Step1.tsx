@@ -28,12 +28,14 @@ const CreateUserStep1 = forwardRef((props: CreateUserStep1Props, ref: Ref<FormSt
   const formRef = useRef<CurrentFormStepRef>();
   const { t } = useTranslation(['user', 'common']);
   const schema = Yup.object().shape({
+    fullName: Yup.string().required(t('common:field_required')),
     email: Yup.string()
       .email(t('common:email_format_incorrect'))
       .required(t('common:field_required')),
     password: Yup.string().required(t('common:field_required')),
   });
   const defaultValues: Omit<CreateOneInput, 'role'> = {
+    fullName: data?.fullName || '',
     email: data?.email || '',
     password: data?.password || '',
   };
@@ -57,6 +59,9 @@ const CreateUserStep1 = forwardRef((props: CreateUserStep1Props, ref: Ref<FormSt
         displayFooter={false}
       >
         <Grid container spacing={3} sx={{ padding: 6 }}>
+          <Grid item xs={6}>
+            <RHFTextField name="fullName" label={t('common:full_name')} />
+          </Grid>
           <Grid item xs={6}>
             <RHFTextField name="email" label={t('common:email')} />
           </Grid>
