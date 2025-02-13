@@ -11,6 +11,7 @@ import { LoadingButton } from '@mui/lab';
 import useAuth from '@modules/auth/hooks/api/useAuth';
 import { LockOpen } from '@mui/icons-material';
 import useUsers, { UpdateOneInput } from '@modules/users/hooks/api/useUsers';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const MyProfile: NextPage = () => {
   const { user } = useAuth();
@@ -75,5 +76,12 @@ const MyProfile: NextPage = () => {
     </>
   );
 };
+
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['topbar', 'footer', 'leftbar', 'user', 'common'])),
+  },
+});
 
 export default withAuth(MyProfile, { mode: AUTH_MODE.LOGGED_IN, redirectUrl: Routes.Auth.Login });
