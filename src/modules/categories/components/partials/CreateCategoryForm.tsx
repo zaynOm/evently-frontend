@@ -4,6 +4,7 @@ import Routes from '@common/defs/routes';
 import { ItemResponse } from '@common/hooks/useItems';
 import { Category } from '@modules/categories/defs/types';
 import useCategories, { CreateOneInput } from '@modules/categories/hooks/api/useCategory';
+import { Grid } from '@mui/material';
 import { useRouter } from 'next/router';
 import { UseFormReturn } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -36,7 +37,11 @@ const CreateCategoryForm = (_props: CreateCategoryFormProps) => {
         defaultValues={defaultValues}
         onPostSubmit={onPostSubmit}
       >
-        <RHFTextField name="name" label="Nom" />
+        <Grid container sx={{ padding: 6, justifyContent: 'center' }}>
+          <Grid item md={8} xs={12}>
+            <RHFTextField name="name" label="Nom" />
+          </Grid>
+        </Grid>
       </CreateCrudItemForm>
     </>
   );
