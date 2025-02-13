@@ -1,0 +1,14 @@
+{
+  "common": {
+    "create_new_one": "Crear una nueva categoría",
+    "edit_one": "Editar la categoría",
+    "items": "Categorías",
+    "new_one": "Nueva categoría",
+    "read_all": "Lista de categorías"
+  },
+  "list": {
+    "created_at": "Fecha de creación",
+    "name": "Nombre",
+    "slug": "Slug"
+  }
+}
