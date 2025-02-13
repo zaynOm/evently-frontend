@@ -61,8 +61,8 @@ const CategoriesTable = () => {
   return (
     <>
       <ItemsTable<Category, CreateOneInput, UpdateOneInput, Row>
-        namespace={Namespaces.Users}
-        routes={Routes.Users}
+        namespace={Namespaces.Categories}
+        routes={Routes.Categories}
         useItems={useCategories}
         columns={translatedColumns}
         itemToRow={itemToRow}
