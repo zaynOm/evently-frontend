@@ -1,0 +1,22 @@
+{
+  "common": {
+    "create_new_one": "Create a new event",
+    "edit_one": "Edit the event",
+    "items": "Events",
+    "new_one": "New event",
+    "read_all": "Event list"
+  },
+  "list": {
+    "title": "Title",
+    "description": "Description",
+    "date": "Date",
+    "time": "Time",
+    "location": "Location",
+    "capacity": "Capacity",
+    "host_id": "Host ID",
+    "hostName": "Host Name",
+    "category_id": "Category ID",
+    "created_at": "Created At",
+    "updated_at": "Updated At"
+  }
+}

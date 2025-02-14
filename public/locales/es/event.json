@@ -1,0 +1,22 @@
+{
+  "common": {
+    "create_new_one": "Crear un nuevo evento",
+    "edit_one": "Editar el evento",
+    "items": "Eventos",
+    "new_one": "Nuevo evento",
+    "read_all": "Lista de eventos"
+  },
+  "list": {
+    "title": "Título",
+    "description": "Descripción",
+    "date": "Fecha",
+    "time": "Hora",
+    "location": "Ubicación",
+    "capacity": "Capacidad",
+    "host_id": "ID del anfitrión",
+    "hostName": "Nombre del anfitrión",
+    "category_id": "ID de la categoría",
+    "created_at": "Creado en",
+    "updated_at": "Actualizado en"
+  }
+}
