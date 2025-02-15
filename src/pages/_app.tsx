@@ -21,25 +21,15 @@ import type {} from '@mui/x-data-grid-pro/themeAugmentation';
 import type {} from '@mui/x-data-grid-premium/themeAugmentation';
 import { RoutingHistoryProvider } from '@common/contexts/RoutingHistoryContext';
 import { DialogProvider } from '@common/contexts/DialogContext';
-import { appWithTranslation, UserConfig } from 'next-i18next';
+import { appWithTranslation } from 'next-i18next';
 import { frFR, enUS, esES } from '@mui/material/locale';
 import { getUserLanguage } from '@common/components/lib/utils/language';
 import { useRouter } from 'next/router';
-import nextI18NextConfig from '../../next-i18next.config.js';
 
 // declare module '@mui/material/Button' { // If we add a color, then we need to add the color in each component
 //    interface ButtonPropsColorOverrides {
 //    }
 // }
-
-// ensure next-i18next doesn't cause unmount/remount on SSG fallback pages
-// https://www.npmjs.com/package/next-i18next#user-content-usage-with-fallback-ssg-pages
-const emptyInitialI18NextConfig: UserConfig = {
-  i18n: {
-    defaultLocale: nextI18NextConfig.i18n.defaultLocale,
-    locales: nextI18NextConfig.i18n.locales,
-  },
-};
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { initialized: authInitialized } = useAuth();
@@ -139,4 +129,4 @@ const AppWrapper = (props: AppProps) => {
   );
 };
 
-export default appWithTranslation(AppWrapper, emptyInitialI18NextConfig);
+export default appWithTranslation(AppWrapper);
