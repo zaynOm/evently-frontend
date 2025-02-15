@@ -13,6 +13,7 @@
     "time": "Hora",
     "location": "Ubicación",
     "capacity": "Capacidad",
+    "participants_count": "Partoprenantoj",
     "host_id": "ID del anfitrión",
     "hostName": "Nombre del anfitrión",
     "category_id": "ID de la categoría",

@@ -13,6 +13,7 @@
     "time": "Time",
     "location": "Location",
     "capacity": "Capacity",
+    "participants_count": "Participants",
     "host_id": "Host ID",
     "hostName": "Host Name",
     "category_id": "Category ID",
