@@ -10,6 +10,7 @@ export interface Event extends CrudObject {
   hostId: Id;
   hostName: string;
   categoryId: Id;
+  participantsCount: number;
 }
 
 export interface EventParticipant {

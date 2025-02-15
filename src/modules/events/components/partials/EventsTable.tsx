@@ -17,6 +17,7 @@ interface Row extends CrudRow {
   time: string;
   location: string;
   capacity: number;
+  participantsCount: number;
   hostId: number;
   categoryId: number;
   createdAt: string;
@@ -62,6 +63,11 @@ const EventsTable = () => {
       flex: 1,
     },
     {
+      field: 'participantsCount',
+      headerName: t('event:list.participants_count'),
+      flex: 1,
+    },
+    {
       field: 'hostId',
       headerName: t('event:list.host_id'),
       flex: 1,
@@ -94,6 +100,7 @@ const EventsTable = () => {
       time: item.time,
       location: item.location,
       capacity: item.capacity,
+      participantsCount: item.participantsCount,
       hostId: item.hostId,
       categoryId: item.categoryId,
       createdAt: item.createdAt,
