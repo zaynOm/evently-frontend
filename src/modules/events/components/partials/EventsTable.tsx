@@ -51,6 +51,7 @@ const EventsTable = () => {
       field: 'time',
       headerName: t('event:list.time'),
       width: 70,
+      renderCell: (params) => dayjs(params.row.time, 'HH:mm:ss').format('HH:mm'),
     },
     {
       field: 'location',
