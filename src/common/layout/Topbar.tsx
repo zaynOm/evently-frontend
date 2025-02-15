@@ -92,6 +92,8 @@ const Topbar = () => {
     },
   ];
 
+  const lastNavItem = navItems[navItems.length - 1];
+
   const toggleDropdown = () => {
     setShowDropdown((oldValue) => !oldValue);
   };
@@ -339,7 +341,7 @@ const Topbar = () => {
                     }}
                   >
                     <>
-                      <ListItemText>{navItems[2].label}</ListItemText>
+                      <ListItemText>{lastNavItem.label}</ListItemText>
                       <KeyboardArrowDown />
                       <List
                         className="dropdown-menu"
@@ -357,7 +359,7 @@ const Topbar = () => {
                           zIndex: 1000000,
                         }}
                       >
-                        {navItems[2].dropdown?.map((dropdownItem, dropdownItemIndex) => {
+                        {lastNavItem.dropdown?.map((dropdownItem, dropdownItemIndex) => {
                           return (
                             <ListItem
                               key={dropdownItemIndex}
@@ -380,7 +382,7 @@ const Topbar = () => {
                                     backgroundColor: 'primary.dark',
                                     color: 'primary.contrastText',
                                   },
-                                  ...(navItems[2].dropdown?.length === dropdownItemIndex + 1 && {
+                                  ...(lastNavItem.dropdown?.length === dropdownItemIndex + 1 && {
                                     borderBottomLeftRadius: 24,
                                     borderBottomRightRadius: 24,
                                   }),
