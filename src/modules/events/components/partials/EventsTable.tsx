@@ -29,7 +29,7 @@ const EventsTable = () => {
     {
       field: 'id',
       headerName: 'ID',
-      width: 50,
+      width: 70,
     },
     {
       field: 'title',
@@ -50,7 +50,7 @@ const EventsTable = () => {
     {
       field: 'time',
       headerName: t('event:list.time'),
-      flex: 1,
+      width: 70,
     },
     {
       field: 'location',
@@ -81,6 +81,7 @@ const EventsTable = () => {
       field: 'createdAt',
       headerName: t('event:list.created_at'),
       type: 'dateTime',
+      minWidth: 130,
       flex: 1,
       renderCell: (params) => dayjs(params.row.createdAt).format('DD/MM/YYYY hh:mm'),
     },
