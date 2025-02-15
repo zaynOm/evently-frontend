@@ -4,10 +4,12 @@ import Footer from './Footer';
 import Leftbar, { LEFTBAR_WIDTH } from './Leftbar';
 import Topbar from './Topbar';
 import Box from '@mui/material/Box';
-import { Container, useTheme, Button, Typography } from '@mui/material';
+import { Container, useTheme, Button, Typography, Theme } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslation } from 'react-i18next';
+import useAuth from '@modules/auth/hooks/api/useAuth';
+import { ROLE } from '@modules/permissions/defs/types';
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -20,6 +22,7 @@ const Layout = (props: ILayoutProps) => {
   const [display, setDisplay] = useState(true);
   const underMaintenance = process.env.NEXT_PUBLIC_UNDER_MAINTENANCE === 'true';
   const { t } = useTranslation('common');
+  const { user } = useAuth();
 
   useEffect(() => {
     setDisplay(!underMaintenance);
@@ -86,50 +89,73 @@ const Layout = (props: ILayoutProps) => {
           display: 'flex',
         }}
       >
-        <Box sx={{ minHeight: '100vh', width: '100vw' }}>
-          <Stack direction="column" sx={{ height: '100%' }}>
-            <Leftbar open={openLeftbar} onToggle={(open) => setOpenLeftbar(open)} />
-            <Topbar />
-            <Box
-              sx={{
-                display: 'flex',
-                flex: 1,
-                justifyContent: 'center',
-                marginLeft: openLeftbar ? LEFTBAR_WIDTH + 'px' : 0,
-                width: openLeftbar ? `calc(100% - ${LEFTBAR_WIDTH}px)` : '100%',
-              }}
-            >
-              <Container
-                sx={{
-                  flex: 1,
-                  paddingY: 6,
-                  transition: theme.transitions.create(['all'], {
-                    easing: theme.transitions.easing.sharp,
-                    duration: theme.transitions.duration.leavingScreen,
-                  }),
-                }}
-              >
-                <Box component="main" sx={{}}>
-                  {children}
-                </Box>
-              </Container>
-            </Box>
-            <Box
-              sx={{
-                marginLeft: openLeftbar ? LEFTBAR_WIDTH + 'px' : 0,
-                maxWidth: openLeftbar ? `calc(100% - ${LEFTBAR_WIDTH}px)` : '100%',
-                transition: theme.transitions.create(['all'], {
-                  easing: theme.transitions.easing.sharp,
-                  duration: theme.transitions.duration.leavingScreen,
-                }),
-              }}
-            >
-              <Footer />
-            </Box>
-          </Stack>
-        </Box>
+        {user?.rolesNames.includes(ROLE.ADMIN) ? (
+          <BaseLayout
+            theme={theme}
+            leftbar={<Leftbar open={openLeftbar} onToggle={(open) => setOpenLeftbar(open)} />}
+            leftbarWidth={openLeftbar ? LEFTBAR_WIDTH : 0}
+          >
+            {children}
+          </BaseLayout>
+        ) : (
+          <BaseLayout theme={theme}>{children}</BaseLayout>
+        )}
       </Box>
     </div>
+  );
+};
+
+interface IBaseLayoutProps {
+  children: React.ReactNode;
+  theme: Theme;
+  leftbar?: React.ReactNode;
+  leftbarWidth?: number;
+}
+
+const BaseLayout = ({ children, theme, leftbar = null, leftbarWidth = 0 }: IBaseLayoutProps) => {
+  return (
+    <Box sx={{ minHeight: '100vh', width: '100vw' }}>
+      <Stack direction="column" sx={{ height: '100%' }}>
+        {leftbar}
+        <Topbar />
+        <Box
+          sx={{
+            display: 'flex',
+            flex: 1,
+            justifyContent: 'center',
+            marginLeft: leftbarWidth > 0 ? `${leftbarWidth}px` : 0,
+            width: leftbarWidth > 0 ? `calc(100% - ${leftbarWidth}px)` : '100%',
+          }}
+        >
+          <Container
+            sx={{
+              flex: 1,
+              paddingY: 6,
+              transition: theme.transitions.create(['all'], {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen,
+              }),
+            }}
+          >
+            <Box component="main" sx={{}}>
+              {children}
+            </Box>
+          </Container>
+        </Box>
+        <Box
+          sx={{
+            marginLeft: leftbarWidth > 0 ? `${leftbarWidth}px` : 0,
+            maxWidth: leftbarWidth > 0 ? `calc(100% - ${leftbarWidth}px)` : '100%',
+            transition: theme.transitions.create(['all'], {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.leavingScreen,
+            }),
+          }}
+        >
+          <Footer />
+        </Box>
+      </Stack>
+    </Box>
   );
 };
 
