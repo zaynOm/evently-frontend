@@ -7,6 +7,8 @@ const ApiRoutes: CrudApiRoutes = {
   ReadOne: prefix + '/{id}',
   UpdateOne: prefix + '/{id}',
   DeleteOne: prefix + '/{id}',
+  HostingEvents: prefix + '/hosting-events',
+  AttendedEvents: prefix + '/attended-events',
 };
 
 export default ApiRoutes;
