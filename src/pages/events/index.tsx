@@ -5,7 +5,10 @@ import Namespaces from '@common/defs/namespaces';
 import Routes from '@common/defs/routes';
 import { CRUD_ACTION } from '@common/defs/types';
 import withAuth, { AUTH_MODE } from '@modules/auth/hocs/withAuth';
+import useAuth from '@modules/auth/hooks/api/useAuth';
+import EventsGrid from '@modules/events/components/partials/EventsGrid';
 import EventsTable from '@modules/events/components/partials/EventsTable';
+import { ROLE } from '@modules/permissions/defs/types';
 import withPermissions from '@modules/permissions/hocs/withPermissions';
 import { Add } from '@mui/icons-material';
 import { NextPage } from 'next';
@@ -14,6 +17,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 
 const EventsPage: NextPage = () => {
+  const { user } = useAuth();
   const router = useRouter();
   const { t } = useTranslation(['event']);
 
@@ -37,7 +41,7 @@ const EventsPage: NextPage = () => {
           { name: t(`event:${Labels.Events.Items}`) },
         ]}
       />
-      <EventsTable />
+      {user?.rolesNames.includes(ROLE.ADMIN) ? <EventsTable /> : <EventsGrid />}
     </>
   );
 };
