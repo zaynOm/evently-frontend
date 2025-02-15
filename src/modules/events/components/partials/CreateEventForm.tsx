@@ -26,7 +26,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
     time: Yup.string().required('Le champ est obligatoire'),
     location: Yup.string().required('Le champ est obligatoire'),
     capacity: Yup.number().required('Le champ est obligatoire'),
-    category_id: Yup.number().required('Le champ est obligatoire'),
+    categoryId: Yup.number().required('Le champ est obligatoire'),
   });
   const defaultValues: CreateOneInput = {
     title: '',
@@ -35,7 +35,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
     time: '',
     location: '',
     capacity: 0,
-    category_id: 0,
+    categoryId: 0,
   };
   const onPreSubmit = (data: CreateOneInput): PresubmitResponse<CreateOneInput, UpdateOneInput> => {
     if (data.date) {
@@ -84,7 +84,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
             <RHFTextField name="capacity" label="Capacity" type="number" />
           </Grid>
           <Grid item xs={6}>
-            <RHFSelect name="category_id" label="Category">
+            <RHFSelect name="categoryId" label="Category">
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.name}
