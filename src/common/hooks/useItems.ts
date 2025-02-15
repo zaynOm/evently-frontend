@@ -95,7 +95,7 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
   );
 
   const mutateAndRefetch: KeyedMutator<Item[] | null> = async () => {
-    setShouldRefetch(true);
+    setShouldRefetch(opts.fetchItems ?? true);
     mutate();
     return null;
   };
