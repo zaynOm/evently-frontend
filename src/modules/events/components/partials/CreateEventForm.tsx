@@ -4,14 +4,13 @@ import CreateCrudItemForm from '@common/components/partials/CreateCrudItemForm';
 import Routes from '@common/defs/routes';
 import { ItemResponse } from '@common/hooks/useItems';
 import { Event } from '@modules/events/defs/types';
-import useEvents, { CreateOneInput, UpdateOneInput } from '@modules/events/hooks/api/useEvents';
+import useEvents, { CreateOneInput } from '@modules/events/hooks/api/useEvents';
 import { Grid, MenuItem } from '@mui/material';
 import { useRouter } from 'next/router';
 import { UseFormReturn } from 'react-hook-form';
 import * as Yup from 'yup';
 import useCategories from '@modules/categories/hooks/api/useCategory';
-import dayjs from 'dayjs';
-import { PresubmitResponse } from '@common/components/partials/UpsertCrudItemForm';
+import { formatEventFormData } from '@modules/events/defs/utils';
 
 interface CreateEventFormProps {}
 
@@ -37,12 +36,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
     capacity: 0,
     categoryId: 0,
   };
-  const onPreSubmit = (data: CreateOneInput): PresubmitResponse<CreateOneInput, UpdateOneInput> => {
-    if (data.date) {
-      data.date = dayjs(data.date).format('YYYY-MM-DD');
-    }
-    return { data };
-  };
+  const onPreSubmit = formatEventFormData;
 
   const onPostSubmit = async (
     _data: CreateOneInput,
