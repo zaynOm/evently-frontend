@@ -25,7 +25,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
     time: Yup.string().required('Le champ est obligatoire'),
     location: Yup.string().required('Le champ est obligatoire'),
     capacity: Yup.number().required('Le champ est obligatoire'),
-    categoryId: Yup.number().required('Le champ est obligatoire'),
+    categoryId: Yup.number().not([-1], 'Select a category').required('Le champ est obligatoire'),
   });
   const defaultValues: CreateOneInput = {
     title: '',
@@ -34,7 +34,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
     time: '',
     location: '',
     capacity: 0,
-    categoryId: 0,
+    categoryId: -1,
   };
   const onPreSubmit = formatEventFormData;
 
@@ -79,6 +79,7 @@ const CreateEventForm = (_props: CreateEventFormProps) => {
           </Grid>
           <Grid item xs={6}>
             <RHFSelect name="categoryId" label="Category">
+              <MenuItem value={-1}>Select a category</MenuItem>
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.name}
