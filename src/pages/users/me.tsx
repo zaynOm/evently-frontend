@@ -12,10 +12,11 @@ import useAuth from '@modules/auth/hooks/api/useAuth';
 import { LockOpen } from '@mui/icons-material';
 import useUsers, { UpdateOneInput } from '@modules/users/hooks/api/useUsers';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { ROLE } from '@modules/permissions/defs/types';
 
 const MyProfile: NextPage = () => {
   const { user } = useAuth();
-  const { updateOne } = useUsers();
+  const { updateOne } = useUsers({ fetchItems: user?.rolesNames[0] === ROLE.ADMIN });
 
   const ProfileSchema = Yup.object().shape({
     fullName: Yup.string().max(255, 'Le champ est trop long.').required('Le champ est obligatoire'),
