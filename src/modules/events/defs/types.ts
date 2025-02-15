@@ -10,8 +10,6 @@ export interface Event extends CrudObject {
   hostId: Id;
   hostName: string;
   categoryId: Id;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface EventParticipant {
