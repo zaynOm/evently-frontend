@@ -1,4 +1,4 @@
-import { CrudObject } from '@common/defs/types';
+import { CrudObject, Id } from '@common/defs/types';
 
 export interface Event extends CrudObject {
   title: string;
@@ -7,14 +7,14 @@ export interface Event extends CrudObject {
   time: string;
   location: string;
   capacity: number;
-  host_id: number;
+  hostId: Id;
   hostName: string;
-  category_id: number;
-  created_at: string;
-  updated_at: string;
+  categoryId: Id;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface EventParticipant {
   fullName: string;
-  joined_at: string;
+  joinedAt: string;
 }
