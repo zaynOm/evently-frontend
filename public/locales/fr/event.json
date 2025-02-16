@@ -4,7 +4,8 @@
     "edit_one": "Modifier l'événement",
     "items": "Événements",
     "new_one": "Nouvel événement",
-    "read_all": "Liste des événements"
+    "read_all": "Liste des événements",
+    "read_one": "Détails de l'événement"
   },
   "list": {
     "title": "Titre",

@@ -4,7 +4,8 @@
     "edit_one": "Edit the event",
     "items": "Events",
     "new_one": "New event",
-    "read_all": "Event list"
+    "read_all": "Event list",
+    "read_one": "Event details"
   },
   "list": {
     "title": "Title",

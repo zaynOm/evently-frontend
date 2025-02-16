@@ -4,7 +4,8 @@
     "edit_one": "Editar el evento",
     "items": "Eventos",
     "new_one": "Nuevo evento",
-    "read_all": "Lista de eventos"
+    "read_all": "Lista de eventos",
+    "read_one": "Detalles del evento"
   },
   "list": {
     "title": "Título",
