@@ -1,22 +1,22 @@
+import CustomBreadcrumbs from '@common/components/lib/navigation/CustomBreadCrumbs';
+import PageHeader from '@common/components/lib/partials/PageHeader';
+import Labels from '@common/defs/labels';
+import Namespaces from '@common/defs/namespaces';
+import Routes from '@common/defs/routes';
+import { CRUD_ACTION, Id } from '@common/defs/types';
+import useProgressBar from '@common/hooks/useProgressBar';
 import withAuth, { AUTH_MODE } from '@modules/auth/hocs/withAuth';
+import EventDetails from '@modules/events/components/partials/EventDetails';
+import { Event } from '@modules/events/defs/types';
+import useEvents from '@modules/events/hooks/api/useEvents';
 import withPermissions from '@modules/permissions/hocs/withPermissions';
 import { NextPage } from 'next';
-import Routes from '@common/defs/routes';
-import { useRouter } from 'next/router';
-import PageHeader from '@common/components/lib/partials/PageHeader';
-import CustomBreadcrumbs from '@common/components/lib/navigation/CustomBreadCrumbs';
-import { useEffect, useState } from 'react';
-import useProgressBar from '@common/hooks/useProgressBar';
-import { CRUD_ACTION, Id } from '@common/defs/types';
-import Namespaces from '@common/defs/namespaces';
-import Labels from '@common/defs/labels';
-import { useTranslation } from 'react-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import useEvents from '@modules/events/hooks/api/useEvents';
-import UpdateEventForm from '@modules/events/components/partials/UpdateEventForm';
-import { Event } from '@modules/events/defs/types';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const EventsPage: NextPage = () => {
+const EventPage: NextPage = () => {
   const router = useRouter();
   const { start, stop } = useProgressBar();
   const { readOne } = useEvents();
@@ -51,16 +51,16 @@ const EventsPage: NextPage = () => {
 
   return (
     <>
-      <PageHeader title={t(`event:${Labels.Events.EditOne}`)} />
+      <PageHeader title={t(`event:${Labels.Events.ReadOne}`)} />
       <CustomBreadcrumbs
         links={[
           { name: t('common:dashboard'), href: Routes.Common.Home },
           { name: t(`event:${Labels.Events.Items}`), href: Routes.Events.ReadAll },
-          { name: item ? item.name : t(`event:${Labels.Events.EditOne}`) },
+          { name: item ? item.title : t(`event:${Labels.Events.ReadOne}`) },
         ]}
       />
 
-      {item && <UpdateEventForm item={item} />}
+      {item && <EventDetails item={item} fetchEvent={fetchEvent} />}
     </>
   );
 };
@@ -76,10 +76,10 @@ export const getStaticProps = async ({ locale }: { locale: string }) => ({
 });
 
 export default withAuth(
-  withPermissions(EventsPage, {
+  withPermissions(EventPage, {
     requiredPermissions: {
       entity: Namespaces.Events,
-      action: CRUD_ACTION.UPDATE,
+      action: CRUD_ACTION.READ,
     },
     redirectUrl: Routes.Permissions.Forbidden,
   }),
