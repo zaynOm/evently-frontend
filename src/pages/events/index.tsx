@@ -6,7 +6,7 @@ import Routes from '@common/defs/routes';
 import { CRUD_ACTION } from '@common/defs/types';
 import withAuth, { AUTH_MODE } from '@modules/auth/hocs/withAuth';
 import useAuth from '@modules/auth/hooks/api/useAuth';
-import EventsGrid from '@modules/events/components/partials/EventsGrid';
+import ExploarEvents from '@modules/events/components/partials/ExploarEvents';
 import EventsTable from '@modules/events/components/partials/EventsTable';
 import { ROLE } from '@modules/permissions/defs/types';
 import withPermissions from '@modules/permissions/hocs/withPermissions';
@@ -41,7 +41,7 @@ const EventsPage: NextPage = () => {
           { name: t(`event:${Labels.Events.Items}`) },
         ]}
       />
-      {user?.rolesNames.includes(ROLE.ADMIN) ? <EventsTable /> : <EventsGrid />}
+      {user?.rolesNames.includes(ROLE.ADMIN) ? <EventsTable /> : <ExploarEvents />}
     </>
   );
 };
