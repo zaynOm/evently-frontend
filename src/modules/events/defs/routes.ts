@@ -4,6 +4,7 @@ const prefix = '/events';
 const Routes: CrudAppRoutes = {
   ReadOne: prefix + '/{id}',
   ReadAll: prefix,
+  MyEvents: prefix + '/my-events',
   CreateOne: prefix + '/create',
   UpdateOne: prefix + '/{id}/edit',
   DeleteOne: prefix + '/{id}',

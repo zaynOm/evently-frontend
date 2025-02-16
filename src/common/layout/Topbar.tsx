@@ -25,6 +25,7 @@ import { ArrowForwardIos, Logout } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { setUserLanguage } from '@common/components/lib/utils/language';
+import { ROLE } from '@modules/permissions/defs/types';
 
 interface TopbarItem {
   label: string;
@@ -52,10 +53,19 @@ const Topbar = () => {
   };
   const navItems: TopbarItem[] = [
     {
-      label: t('topbar:home'),
-      link: Routes.Common.Home,
-      onClick: () => router.push(Routes.Common.Home),
+      label: t('topbar:Explore'),
+      link: Routes.Events.ReadAll,
+      onClick: () => router.push(Routes.Events.ReadAll),
     },
+    ...(user?.rolesNames[0] === ROLE.USER
+      ? [
+          {
+            label: t('topbar:events'),
+            link: Routes.Events.MyEvents,
+            onClick: () => router.push(Routes.Events.MyEvents),
+          },
+        ]
+      : []),
     {
       label: t('topbar:language'),
       dropdown: [
