@@ -2,6 +2,7 @@ import { CrudAppRoutes } from '@common/defs/types';
 
 const prefix = '/events';
 const Routes: CrudAppRoutes = {
+  ReadOne: prefix + '/{id}',
   ReadAll: prefix,
   CreateOne: prefix + '/create',
   UpdateOne: prefix + '/{id}/edit',
