@@ -108,7 +108,9 @@ const EventDetails = (props: IEventDetailsProps) => {
                     label={
                       isFull
                         ? 'Event is Full'
-                        : `${item.capacity - item.participantsCount} spots left`
+                        : `${item.capacity - item.participantsCount} spot${
+                            item.capacity - item.participantsCount === 1 ? '' : 's'
+                          } left`
                     }
                     color={isFull ? 'error' : 'success'}
                   />
