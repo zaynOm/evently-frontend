@@ -6,7 +6,9 @@ import Routes from '@common/defs/routes';
 import { CRUD_ACTION } from '@common/defs/types';
 import withAuth, { AUTH_MODE } from '@modules/auth/hocs/withAuth';
 import UserEvents from '@modules/events/components/partials/UserEvents';
+import { ROLE } from '@modules/permissions/defs/types';
 import withPermissions from '@modules/permissions/hocs/withPermissions';
+import withRoles from '@modules/roles/hocs/withRoles';
 import { Add } from '@mui/icons-material';
 import { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -56,12 +58,15 @@ export const getStaticProps = async ({ locale }: { locale: string }) => ({
 });
 
 export default withAuth(
-  withPermissions(EventsPage, {
-    requiredPermissions: {
-      entity: Namespaces.Events,
-      action: CRUD_ACTION.READ,
-    },
-    redirectUrl: Routes.Permissions.Forbidden,
-  }),
+  withPermissions(
+    withRoles(EventsPage, { requiredRoles: ROLE.USER, redirectUrl: Routes.Events.ReadAll }),
+    {
+      requiredPermissions: {
+        entity: Namespaces.Events,
+        action: CRUD_ACTION.READ,
+      },
+      redirectUrl: Routes.Permissions.Forbidden,
+    }
+  ),
   { mode: AUTH_MODE.LOGGED_IN, redirectUrl: Routes.Auth.Login }
 );
