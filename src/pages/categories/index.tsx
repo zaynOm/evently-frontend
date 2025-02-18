@@ -57,7 +57,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => ({
 export default withAuth(
   withPermissions(CategoriesPage, {
     requiredPermissions: {
-      entity: Namespaces.Categories,
+      entity: Namespaces.Users,
       action: CRUD_ACTION.READ,
     },
     redirectUrl: Routes.Permissions.Forbidden,
