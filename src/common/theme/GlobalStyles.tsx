@@ -14,7 +14,7 @@ const GlobalStyles = () => {
         html: {
           margin: 0,
           padding: 0,
-          width: '100%',
+          width: '100vw',
           height: '100%',
           WebkitOverflowScrolling: 'touch',
         },
