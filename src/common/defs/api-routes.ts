@@ -12,6 +12,7 @@ const ApiRoutes = {
   Posts,
   Categories,
   Events,
+  Stats: '/stats',
 };
 
 export default ApiRoutes;

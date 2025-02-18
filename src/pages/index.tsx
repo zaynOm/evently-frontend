@@ -1,6 +1,7 @@
 import PageHeader from '@common/components/lib/partials/PageHeader';
 import Routes from '@common/defs/routes';
 import withAuth, { AUTH_MODE } from '@modules/auth/hocs/withAuth';
+import DashboardStats from '@modules/users/components/partials/DashboardStats';
 import { NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +11,7 @@ const Index: NextPage = () => {
   return (
     <>
       <PageHeader title={t('home:dashboard')} />
+      <DashboardStats />
     </>
   );
 };
