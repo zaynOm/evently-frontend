@@ -24,6 +24,9 @@ const CategoriesTable = () => {
       field: 'id',
       headerName: 'ID',
       width: 100,
+      type: 'number',
+      headerAlign: 'left',
+      align: 'left',
     },
     {
       field: 'name',

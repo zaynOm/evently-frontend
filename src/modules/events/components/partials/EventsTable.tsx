@@ -30,6 +30,9 @@ const EventsTable = () => {
       field: 'id',
       headerName: 'ID',
       width: 70,
+      type: 'number',
+      headerAlign: 'left',
+      align: 'left',
     },
     {
       field: 'title',
@@ -45,12 +48,14 @@ const EventsTable = () => {
       field: 'date',
       headerName: t('event:list.date'),
       flex: 1,
+      type: 'date',
       renderCell: (params) => dayjs(params.row.date).format('DD/MM/YYYY'),
     },
     {
       field: 'time',
       headerName: t('event:list.time'),
       width: 70,
+      type: 'time',
       renderCell: (params) => dayjs(params.row.time, 'HH:mm:ss').format('HH:mm'),
     },
     {
@@ -62,21 +67,25 @@ const EventsTable = () => {
       field: 'capacity',
       headerName: t('event:list.capacity'),
       flex: 1,
+      type: 'number',
     },
     {
       field: 'participantsCount',
       headerName: t('event:list.participants_count'),
       flex: 1,
+      type: 'number',
     },
     {
       field: 'hostId',
       headerName: t('event:list.host_id'),
       flex: 1,
+      type: 'number',
     },
     {
       field: 'categoryId',
       headerName: t('event:list.category_id'),
       flex: 1,
+      type: 'number',
     },
     {
       field: 'createdAt',

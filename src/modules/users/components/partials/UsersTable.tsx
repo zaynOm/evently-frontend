@@ -25,6 +25,9 @@ const UsersTable = () => {
       field: 'id',
       headerName: 'ID',
       width: 100,
+      type: 'number',
+      headerAlign: 'left',
+      align: 'left',
     },
     {
       field: 'fullName',
