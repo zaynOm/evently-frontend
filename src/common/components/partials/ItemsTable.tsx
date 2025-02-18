@@ -154,9 +154,9 @@ const ItemsTable = <Item, CreateOneInput, UpdateOneInput, Row extends CrudRow>(
     let sortParam: SortParam | undefined;
     if (filterModel && filterModel.items[0]) {
       filterParam = {
-        filterColumn: filterModel.items[0].columnField,
-        filterOperator: filterModel.items[0].operatorValue || 'equals',
-        filterValue: filterModel.items[0].value,
+          columnField: filterModel.items[0].columnField,
+          operatorValue: filterModel.items[0].operatorValue || 'equals',
+          value: filterModel.items[0].value,
       };
     }
 

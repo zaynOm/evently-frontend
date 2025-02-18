@@ -9,9 +9,9 @@ export interface PaginationMeta {
   totalItems: number;
 }
 export interface FilterParam {
-  filterColumn: string;
-  filterOperator: string;
-  filterValue?: Any;
+  columnField: string;
+  operatorValue: string;
+  value?: Any;
 }
 
 export interface SortParam {
@@ -154,10 +154,9 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
     const queryParams = new URLSearchParams(paginationOptions).toString();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore: ignoring uncorrect params type mismatch
-    const filterParam = filters
-      ?.filter((filter) => filter !== undefined && filter !== null)
-      .map((filter) => encodeURIComponent(JSON.stringify(filter)))
-      .join('&filters[]=');
+    const filterParam = {
+      items: filters?.filter((filter) => filter !== undefined && filter !== null),
+    };
 
     const sortParams = columnsSort
       ? `&order[column]=${columnsSort.column}&order[dir]=${columnsSort.dir}`
@@ -165,8 +164,8 @@ const useItems = <Item, CreateOneInput, UpdateOneInput>(
 
     const response = await fetchApi<ItemsData<Item>>(
       `${apiRoutes.ReadAll}?${queryParams}${sortParams}${
-        filterParam !== undefined && filterParam !== null && filterParam !== ''
-          ? '&filters[]=' + filterParam
+        filterParam !== undefined && filterParam.items !== null && filterParam.items?.length !== 0
+          ? '&filter=' + encodeURIComponent(JSON.stringify(filterParam))
           : ''
       }`,
       options
