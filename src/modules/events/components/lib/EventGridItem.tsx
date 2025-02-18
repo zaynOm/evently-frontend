@@ -97,7 +97,7 @@ const EventGridItem = (props: IEventGridProps) => {
           </Typography>
           <Chip
             label={isFull ? 'Full' : `${event.participantsCount} / ${event.capacity}`}
-            color={isFull ? 'error' : 'success'}
+            color={isFull ? 'info' : 'default'}
           />
         </Stack>
         <Stack
