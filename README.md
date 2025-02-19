@@ -1,26 +1,45 @@
+# Evently - Event Management Platform
+
+Evently is a simple event management platform.
+
 ## Getting Started
 
-# Tech Stack
+1. Clone the repo:
 
-- MUI
-- Next
-- Emotion
-- ESLint
-- Prettier
-- SWR
+```bash
+git clone https://github.com/zaynOm/evently-frontend.git
+```
 
-# Setup
+2. Install dependencies:
 
-## VSCode
+```bash
+cd evently-frontend
 
-- Install Prettier
-- Install ESLint
+npm install
+# or
+pnpm install
+```
 
-## Common code
+3. Environment variables:
 
-For each web project using an APP and an ADMIN using some common code, please create a npm package (check the starter in gitlab) and add it as a dependency to the web project.
+- Copy the `.env.example` into a new file named `.env` manually.
 
-# Important
+Or you can use this command:
 
-- Regularly, and especially before pushing, do a `npm run lint` to check that everything is ok.
-- For imports, you can use absolute paths
+```bash
+cp .env.example .env
+```
+
+- Make sure to set the following variable in your `.env` file to disable maintenance mode:
+
+```bash
+NEXT_PUBLIC_UNDER_MAINTENANCE=false
+```
+
+4. Start the server:
+
+```bash
+npm run dev
+# or
+pnpm dev
+```
