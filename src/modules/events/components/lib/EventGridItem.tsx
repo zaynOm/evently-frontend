@@ -188,6 +188,7 @@ const EventGridItem = (props: IEventGridProps) => {
           <Button
             color="primary"
             variant="outlined"
+            sx={{ ml: 'auto' }}
             onClick={() => router.push(routes.Events.ReadOne.replace('{id}', event.id.toString()))}
           >
             {t('event:view_details')}
