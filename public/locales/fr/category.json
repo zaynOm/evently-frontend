@@ -4,7 +4,9 @@
     "edit_one": "Éditer la catégorie",
     "items": "Catégories",
     "new_one": "Nouvelle catégorie",
-    "read_all": "Liste des catégories"
+    "read_all": "Liste des catégories",
+    "category": "Catégorie",
+    "select_a_category": "Selectionner une catégorie"
   },
   "list": {
     "created_at": "Date de création",

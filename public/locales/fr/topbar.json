@@ -9,5 +9,8 @@
     "logout": "Se déconnecter"
   },
   "login": "Connexion",
-  "register": "Inscription"
+  "register": "Inscription",
+  "profile": "Profile",
+  "my_profile": "Mon Profile",
+  "logout": "Se déconnecter"
 }

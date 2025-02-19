@@ -26,6 +26,7 @@ import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import { setUserLanguage } from '@common/components/lib/utils/language';
 import { ROLE } from '@modules/permissions/defs/types';
+import useRoles from '@modules/roles/hooks/useRoles';
 
 interface TopbarItem {
   label: string;
@@ -46,26 +47,33 @@ const Topbar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const { user, logout } = useAuth();
+  const { hasRole } = useRoles();
 
   const dropdownWidth = 137;
   const toggleSidebar = () => {
     setShowDrawer((oldValue) => !oldValue);
   };
   const navItems: TopbarItem[] = [
-    {
-      label: t('topbar:Explore'),
-      link: Routes.Events.ReadAll,
-      onClick: () => router.push(Routes.Events.ReadAll),
-    },
-    ...(user?.rolesNames[0] === ROLE.USER
+    ...(hasRole(ROLE.USER)
       ? [
+          {
+            label: t('topbar:Explore'),
+            link: Routes.Events.ReadAll,
+            onClick: () => router.push(Routes.Events.ReadAll),
+          },
           {
             label: t('topbar:events'),
             link: Routes.Events.MyEvents,
             onClick: () => router.push(Routes.Events.MyEvents),
           },
         ]
-      : []),
+      : [
+          {
+            label: t('topbar:home'),
+            link: Routes.Common.Home,
+            onClick: () => router.push(Routes.Common.Home),
+          },
+        ]),
     {
       label: t('topbar:language'),
       dropdown: [
@@ -87,15 +95,15 @@ const Topbar = () => {
       ],
     },
     {
-      label: 'Utilisateur',
+      label: t('topbar:profile'),
       dropdown: [
         {
-          label: 'Mon Profil',
+          label: t('topbar:my_profile'),
           link: Routes.Users.Me,
           onClick: () => router.push(Routes.Users.Me),
         },
         {
-          label: 'Déconnexion',
+          label: t('topbar:logout'),
           onClick: () => logout(),
         },
       ],
@@ -164,7 +172,7 @@ const Topbar = () => {
           <List sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
             <>
               {navItems.map((item, index) => {
-                if (item.label === 'Utilisateur') {
+                if (item.label === t('topbar:profile')) {
                   return null;
                 }
                 return (

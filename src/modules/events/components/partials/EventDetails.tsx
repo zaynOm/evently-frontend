@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 import { useDialogContext } from '@common/contexts/DialogContext';
 import useAuth from '@modules/auth/hooks/api/useAuth';
 import useEvents from '@modules/events/hooks/api/useEvents';
+import { useTranslation } from 'react-i18next';
 
 interface IEventDetailsProps {
   item: Event;
@@ -25,6 +26,7 @@ interface IEventDetailsProps {
 
 const EventDetails = (props: IEventDetailsProps) => {
   const { item, fetchEvent } = props;
+  const { t } = useTranslation(['event', 'common']);
   const router = useRouter();
   const { joinEvent, leaveEvent, deleteOne } = useEvents();
   const { user } = useAuth();
@@ -47,14 +49,14 @@ const EventDetails = (props: IEventDetailsProps) => {
 
   const handleDelete = () => {
     openConfirmDialog(
-      'Delete Event',
-      'Are you sure you want to delete this event? This action cannot be undone.',
+      t('common:delete'),
+      t('common:confirm_delete'),
       () => {
         deleteOne(item.id, { displayProgress: true, displaySuccess: true }).then(() => {
           router.push(Routes.Events.ReadAll);
         });
       },
-      'Delete',
+      t('common:delete'),
       'error'
     );
   };
@@ -68,7 +70,7 @@ const EventDetails = (props: IEventDetailsProps) => {
               {item.title}
             </Typography>
             <Typography variant="h6" gutterBottom>
-              Description
+              {t('event:list:description')}
             </Typography>
             <Typography variant="body1" paragraph>
               {item.description}
@@ -91,7 +93,7 @@ const EventDetails = (props: IEventDetailsProps) => {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Person color="action" />
                 <Typography>
-                  {item.participantsCount} / {item.capacity} participants
+                  {item.participantsCount} / {item.capacity} {t('event:list:participants_count')}
                 </Typography>
               </Box>
             </Stack>
@@ -101,16 +103,19 @@ const EventDetails = (props: IEventDetailsProps) => {
             <Card variant="outlined">
               <CardContent>
                 <Typography variant="h6" gutterBottom>
-                  Event Status
+                  {t('event:status')}
                 </Typography>
                 <Stack spacing={2}>
                   <Chip
                     label={
                       isFull
-                        ? 'Event is Full'
-                        : `${item.capacity - item.participantsCount} spot${
-                            item.capacity - item.participantsCount === 1 ? '' : 's'
-                          } left`
+                        ? t('event:common:event_full')
+                        : `${item.capacity - item.participantsCount} 
+                            ${
+                              item.capacity - item.participantsCount === 1
+                                ? t('event:common:spot_left')
+                                : t('event:common:spots_left')
+                            }`
                     }
                     color={isFull ? 'error' : 'success'}
                   />
@@ -135,10 +140,10 @@ const EventDetails = (props: IEventDetailsProps) => {
                           }
                           fullWidth
                         >
-                          Edit Event
+                          {t('common:edit')}
                         </Button>
                         <Button variant="outlined" color="error" onClick={handleDelete} fullWidth>
-                          Delete Event
+                          {t('common:delete')}
                         </Button>
                       </>
                     )}

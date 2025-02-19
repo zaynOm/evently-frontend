@@ -31,7 +31,14 @@ const EventsPage: NextPage = () => {
 
 export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['topbar', 'footer', 'leftbar', 'event', 'common'])),
+    ...(await serverSideTranslations(locale, [
+      'topbar',
+      'footer',
+      'leftbar',
+      'event',
+      'common',
+      'category',
+    ])),
   },
 });
 

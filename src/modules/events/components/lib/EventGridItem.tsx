@@ -20,6 +20,7 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 import router from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 interface IEventGridProps {
   event: Event;
@@ -29,6 +30,7 @@ interface IEventGridProps {
 
 const EventGridItem = (props: IEventGridProps) => {
   const { event, namespace, fetchEvents } = props;
+  const { t } = useTranslation(['event', 'common']);
   const { deleteOne, joinEvent, leaveEvent } = useEvents();
   const { openConfirmDialog } = useDialogContext();
   const { can } = usePermissions();
@@ -96,7 +98,11 @@ const EventGridItem = (props: IEventGridProps) => {
             {event.hostName}
           </Typography>
           <Chip
-            label={isFull ? 'Full' : `${event.participantsCount} / ${event.capacity}`}
+            label={
+              isFull
+                ? t('event:common.event_full')
+                : `${event.participantsCount} / ${event.capacity}`
+            }
             color={isFull ? 'info' : 'default'}
           />
         </Stack>
@@ -141,7 +147,7 @@ const EventGridItem = (props: IEventGridProps) => {
                     router.push(routes.Events.UpdateOne.replace('{id}', event.id.toString()))
                   }
                 >
-                  Edit
+                  {t('common:edit')}
                 </Button>
               )}
               {canDelete(event.id) && (
@@ -150,18 +156,18 @@ const EventGridItem = (props: IEventGridProps) => {
                   color="error"
                   onClick={() => {
                     openConfirmDialog(
-                      'Delete',
-                      'Are you sure you want to delete this item? This action is irreversible.',
+                      t('common:delete'),
+                      t('common:confirm_delete'),
                       () => {
                         deleteOne(event.id, { displayProgress: true, displaySuccess: true });
                         fetchEvents();
                       },
-                      'Delete',
+                      t('common:delete'),
                       'error'
                     );
                   }}
                 >
-                  Delete
+                  {t('common:delete')}
                 </Button>
               )}
             </Stack>
@@ -169,12 +175,12 @@ const EventGridItem = (props: IEventGridProps) => {
             <>
               {canJoin && (
                 <Button variant="contained" onClick={handleJoin}>
-                  Join
+                  {t('event:common:join_event')}
                 </Button>
               )}
               {canLeave && (
                 <Button variant="contained" onClick={handleLeave}>
-                  Leave
+                  {t('event:common:leave_event')}
                 </Button>
               )}
             </>
@@ -184,7 +190,7 @@ const EventGridItem = (props: IEventGridProps) => {
             variant="outlined"
             onClick={() => router.push(routes.Events.ReadOne.replace('{id}', event.id.toString()))}
           >
-            View Details
+            {t('event:view_details')}
           </Button>
         </Stack>
       </CardActions>

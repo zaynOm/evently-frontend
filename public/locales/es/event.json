@@ -5,7 +5,21 @@
     "items": "Eventos",
     "new_one": "Nuevo evento",
     "read_all": "Lista de eventos",
-    "read_one": "Detalles del evento"
+    "read_one": "Detalles del evento",
+    "search_placeholder": "Buscar...",
+    "clear_filters": "Limpiar filtros",
+    "no_events_found": "No se encontraron eventos",
+    "join_event": "Unirse al evento",
+    "leave_event": "Abandonar el evento",
+    "event_full": "Evento lleno",
+    "spot_left": "Plaza disponible",
+    "spots_left": "Plazas disponibles"
+  },
+  "tabs": {
+    "hosting": "Organizando",
+    "attending": "Asistiendo",
+    "no_attending_events_found": "No has asistido a ningú evento todavía.",
+    "no_hosting_events_found": "No estás organizando ningú evento."
   },
   "list": {
     "title": "Título",
@@ -20,5 +34,7 @@
     "category_id": "ID de la categoría",
     "created_at": "Creado en",
     "updated_at": "Actualizado en"
-  }
+  },
+  "view_details": "Ver detalles",
+  "status": "Estado del evento"
 }

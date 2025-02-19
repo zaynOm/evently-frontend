@@ -5,7 +5,21 @@
     "items": "Événements",
     "new_one": "Nouvel événement",
     "read_all": "Liste des événements",
-    "read_one": "Détails de l'événement"
+    "read_one": "Détails de l'événement",
+    "search_placeholder": "Rechercher...",
+    "clear_filters": "Effacer les filtres",
+    "no_events_found": "Aucun événement trouvé",
+    "join_event": "Participer",
+    "leave_event": "Quitter l'événement",
+    "event_full": "Événement plein",
+    "spot_left": "place restante",
+    "spots_left": "places restantes"
+  },
+  "tabs": {
+    "hosting": "Organiser",
+    "attending": "Assister",
+    "no_attending_events_found": "Vous n'avez pas encore assisté à un événement.",
+    "no_hosting_events_found": "Vous n'avez pas organisé d'événement."
   },
   "list": {
     "title": "Titre",
@@ -20,5 +34,7 @@
     "category_id": "ID de la catégorie",
     "created_at": "Créé le",
     "updated_at": "Mis à jour le"
-  }
+  },
+  "view_details": "Voir les détails",
+  "status": "Statut de l'événement"
 }

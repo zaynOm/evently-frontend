@@ -5,7 +5,21 @@
     "items": "Events",
     "new_one": "New event",
     "read_all": "Event list",
-    "read_one": "Event details"
+    "read_one": "Event details",
+    "search_placeholder": "Search...",
+    "clear_filters": "Clear filters",
+    "no_events_found": "No events found",
+    "join_event": "Join event",
+    "leave_event": "Leave event",
+    "event_full": "Event is full",
+    "spot_left": "Spot left",
+    "spots_left": "Spots left"
+  },
+  "tabs": {
+    "hosting": "Hosting",
+    "attending": "Attending",
+    "no_attending_events_found": "You haven't attended any events yet.",
+    "no_hosting_events_found": "You're not hosting any events."
   },
   "list": {
     "title": "Title",
@@ -20,5 +34,7 @@
     "category_id": "Category ID",
     "created_at": "Created At",
     "updated_at": "Updated At"
-  }
+  },
+  "view_details": "View details",
+  "status": "Event status"
 }

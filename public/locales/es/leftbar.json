@@ -2,5 +2,8 @@
   "logout": "Cerrar sesión",
   "management": "Gestión",
   "dashboard": "Tablero",
-  "login": "Iniciar sesión"
+  "login": "Iniciar sesión",
+  "users": "Usuarios",
+  "categories": "Categorías",
+  "events": "Eventos"
 }

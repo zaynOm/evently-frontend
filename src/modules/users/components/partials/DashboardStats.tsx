@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Stats {
   usersCount: number;
@@ -23,6 +24,7 @@ interface Stats {
 }
 
 const DashboardStats = () => {
+  const { t } = useTranslation(['user', 'event', 'category']);
   const fetchApi = useApi();
   const [stats, setStats] = useState<Stats>();
   const [loading, setLoading] = useState(false);
@@ -47,19 +49,19 @@ const DashboardStats = () => {
 
   const statItems = [
     {
-      title: 'Users',
+      title: t('user:common:items'),
       count: stats?.usersCount,
       icon: <People sx={{ fontSize: 56, color: palette.primary.dark }} />,
       route: Routes.Users.ReadAll,
     },
     {
-      title: 'Events',
+      title: t('event:common:items'),
       count: stats?.eventsCount,
       icon: <Event sx={{ fontSize: 56, color: palette.primary.dark }} />,
       route: Routes.Events.ReadAll,
     },
     {
-      title: 'Categories',
+      title: t('category:common:items'),
       count: stats?.categoriesCount,
       icon: <Category sx={{ fontSize: 56, color: palette.primary.dark }} />,
       route: Routes.Categories.ReadAll,

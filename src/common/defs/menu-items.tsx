@@ -6,15 +6,15 @@ import { Category, Event, Group } from '@mui/icons-material';
 
 export const menuItems: NavGroup[] = [
   {
-    text: 'Gestion',
+    text: 'leftbar:management',
     items: [
       {
-        text: 'Dashboard',
+        text: 'leftbar:dashboard',
         icon: <DashboardCustomizeRoundedIcon />,
         link: Routes.Common.Home,
       },
       {
-        text: 'Users',
+        text: 'leftbar:users',
         icon: <Group />,
         link: Routes.Users.ReadAll,
         namespace: Namespaces.Users,
@@ -22,7 +22,7 @@ export const menuItems: NavGroup[] = [
         routes: Routes.Users,
       },
       {
-        text: 'Categories',
+        text: 'leftbar:categories',
         icon: <Category />,
         link: Routes.Categories.ReadAll,
         namespace: Namespaces.Categories,
@@ -30,7 +30,7 @@ export const menuItems: NavGroup[] = [
         routes: Routes.Categories,
       },
       {
-        text: 'Events',
+        text: 'leftbar:events',
         icon: <Event />,
         link: Routes.Events.ReadAll,
         namespace: Namespaces.Events,

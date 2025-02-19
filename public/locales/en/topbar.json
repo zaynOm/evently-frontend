@@ -9,5 +9,8 @@
     "logout": "Logout"
   },
   "login": "Login",
-  "register": "Register"
+  "register": "Register",
+  "profile": "Profile",
+  "my_profile": "My Profile",
+  "logout": "Logout"
 }

@@ -7,6 +7,7 @@ import {
   Button,
   ButtonProps,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 interface DialogButton {
   text: string;
@@ -44,6 +45,7 @@ const DialogContext = createContext<DialogContextType>(undefined!);
 export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   const [dialogData, setDialogData] = useState<DialogData>(defaultDialogData);
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation(['common']);
 
   const close = () => {
     setIsOpen(false);
@@ -67,7 +69,7 @@ export const DialogProvider = ({ children }: { children: React.ReactNode }) => {
       message,
       buttons: [
         {
-          text: 'Cancel',
+          text: t('common:cancel'),
           color: 'inherit',
           action: close,
         },

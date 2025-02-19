@@ -35,6 +35,7 @@ import {
   StyledSubheader,
 } from '@common/components/lib/navigation/Drawers/styled-drawer-items';
 import { useTranslation } from 'react-i18next';
+import { i18n } from 'next-i18next';
 
 interface LeftbarProps {
   open: boolean;
@@ -68,6 +69,7 @@ const Leftbar = (props: LeftbarProps) => {
     const groups = menuGroups
       .map((menuGroup) => ({
         ...menuGroup,
+        text: t(menuGroup.text as string),
         items: filteredMenuItems(menuGroup.items),
       }))
       .filter((group) => group.items.length > 0);
@@ -77,7 +79,7 @@ const Leftbar = (props: LeftbarProps) => {
   const filteredMenuItems = (menuItems: NavItem[]) => {
     const items = menuItems
       .map((menuItem) => {
-        let item = { ...menuItem };
+        let item = { ...menuItem, text: t(menuItem.text) };
         if (menuItem.children && menuItem.children.length > 0) {
           item = { ...item, children: filteredMenuItems(menuItem.children) };
         }
@@ -108,7 +110,7 @@ const Leftbar = (props: LeftbarProps) => {
 
   useEffect(() => {
     setNavEntries(filteredGroups());
-  }, [user]);
+  }, [user, i18n?.language]);
   return (
     <>
       <Drawer

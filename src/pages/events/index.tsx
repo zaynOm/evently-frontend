@@ -55,6 +55,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => ({
       'user',
       'common',
       'event',
+      'category',
     ])),
   },
 });

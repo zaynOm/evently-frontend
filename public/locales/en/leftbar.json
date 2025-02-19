@@ -2,5 +2,8 @@
   "logout": "Logout",
   "login": "Login",
   "management": "Management",
-  "dashboard": "Dashboard"
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "categories": "Categories",
+  "events": "Events"
 }

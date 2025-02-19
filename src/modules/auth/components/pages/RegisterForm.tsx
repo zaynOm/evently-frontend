@@ -10,9 +10,11 @@ import Link from '@mui/material/Link';
 import Routes from '@common/defs/routes';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = () => {
   const { register } = useAuth();
+  const { t } = useTranslation(['common']);
 
   const RegisterSchema = Yup.object().shape({
     fullName: Yup.string().max(255, 'Le champ est trop long.').required('Le champ est obligatoire'),
@@ -53,19 +55,19 @@ const RegisterForm = () => {
           fontWeight: 'bold',
         }}
       >
-        Inscription
+        {t('common:register')}
       </Typography>
       <Card sx={{ maxWidth: '450px', margin: 'auto' }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={4} sx={{ padding: 5 }}>
             <Grid item xs={12}>
-              <RHFTextField name="fullName" label="Nom complet" />
+              <RHFTextField name="fullName" label={t('common:full_name')} />
             </Grid>
             <Grid item xs={12}>
-              <RHFTextField name="email" label="Email" />
+              <RHFTextField name="email" label={t('common:email')} />
             </Grid>
             <Grid item xs={12}>
-              <RHFTextField name="password" label="Mot de passe" type="password" />
+              <RHFTextField name="password" label={t('common:password')} type="password" />
             </Grid>
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <LoadingButton
@@ -76,12 +78,13 @@ const RegisterForm = () => {
                 loadingPosition="start"
                 loading={isSubmitting}
               >
-                Enregistrer
+                {t('common:register')}
               </LoadingButton>
             </Grid>
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <Typography variant="body2" color="text.secondary">
-                Avez-vous déjà un compte ? <Link href={Routes.Auth.Login}>Connectez-vous</Link>
+                {t('common:already_registered')}{' '}
+                <Link href={Routes.Auth.Login}>{t('topbar:login')}</Link>
               </Typography>
             </Grid>
           </Grid>

@@ -4,6 +4,7 @@ import EventsGrid from '@modules/events/components/lib/EventsGrid';
 import { Event } from '@modules/events/defs/types';
 import { Box, Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface EventsResponse {
   items: Event[];
@@ -11,6 +12,7 @@ export interface EventsResponse {
 
 const UserEvents = () => {
   const fetchApi = useApi();
+  const { t } = useTranslation(['event']);
   const [hostingEvents, setHostingEvents] = useState<Event[]>([]);
   const [attendingEvents, setAttendingEvents] = useState<Event[]>([]);
   const [activeTab, setActiveTab] = useState(0);
@@ -50,21 +52,21 @@ const UserEvents = () => {
         centered
         sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}
       >
-        <Tab label="Hosting Events" />
-        <Tab label="Attending Events" />
+        <Tab label={t('event:tabs:hosting')} />
+        <Tab label={t('event:tabs:attending')} />
       </Tabs>
       {activeTab === 0 && (
         <EventsGrid
           events={hostingEvents}
           fetchEvents={fetchHostingEvents}
-          emptyMessage="You are not hosting any events"
+          emptyMessage={t('event:tabs:no_hosting_events_found')}
         />
       )}
       {activeTab === 1 && (
         <EventsGrid
           events={attendingEvents}
           fetchEvents={fetchAttendingEvents}
-          emptyMessage="You are not attending any events"
+          emptyMessage={t('event:tabs:no_attending_events_found')}
         />
       )}
     </Box>

@@ -2,6 +2,7 @@ import Namespaces from '@common/defs/namespaces';
 import EventGridItem from '@modules/events/components/lib/EventGridItem';
 import { Event } from '@modules/events/defs/types';
 import { Box, Grid, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 interface EventsListProps {
   events: Event[];
@@ -10,7 +11,8 @@ interface EventsListProps {
 }
 
 const EventsGrid = (props: EventsListProps) => {
-  const { events, fetchEvents, emptyMessage = 'No events found' } = props;
+  const { t } = useTranslation(['event']);
+  const { events, fetchEvents, emptyMessage = t('event:common:no_events_found') } = props;
   if (!events || events.length === 0) {
     return (
       <Box sx={{ textAlign: 'center', py: 4 }}>

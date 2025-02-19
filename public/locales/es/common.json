@@ -5,6 +5,8 @@
   "admin_role": "Administrador",
   "cancel": "Cancelar",
   "confirm_delete": "¿Está seguro de que desea eliminar este elemento?",
+  "register": "Registrar",
+  "already_registered": "¿Ya tienes una cuenta?",
   "delete": "Eliminar",
   "edit": "Editar",
   "add": "Añadir",

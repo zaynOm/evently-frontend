@@ -20,11 +20,13 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { debounce } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 dayjs.extend(customParseFormat);
 
 const ExploreEvents = () => {
   const { user } = useAuth();
+  const { t } = useTranslation(['event', 'category']);
   const { items, readAll } = useEvents();
   const [events, setEvents] = useState<EventApp[]>([]);
   const { items: categories } = useCategories({ fetchItems: true });
@@ -108,7 +110,7 @@ const ExploreEvents = () => {
           <Grid item xs={12} md={6}>
             <TextField
               name="search"
-              label="Search"
+              label={t('event:common:search_placeholder')}
               fullWidth
               value={search}
               onChange={handleSearchChange}
@@ -124,12 +126,12 @@ const ExploreEvents = () => {
           <Grid item xs={12} md={3}>
             <Select
               name="categoryId"
-              label="Category"
+              label={t('category:common:items')}
               value={selectedCategory}
               onChange={handleCategoryChange}
               fullWidth
             >
-              <MenuItem value={-1}>Categories</MenuItem>
+              <MenuItem value={-1}>{t('category:common:items')}</MenuItem>
               {categories?.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.name}
@@ -146,7 +148,7 @@ const ExploreEvents = () => {
               fullWidth
               onClick={handleClearFilters}
             >
-              Clear filters
+              {t('event:common:clear_filters')}
             </Button>
           </Grid>
         </Grid>

@@ -13,10 +13,12 @@ import { LockOpen } from '@mui/icons-material';
 import useUsers, { UpdateOneInput } from '@modules/users/hooks/api/useUsers';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ROLE } from '@modules/permissions/defs/types';
+import { useTranslation } from 'react-i18next';
 
 const MyProfile: NextPage = () => {
   const { user } = useAuth();
   const { updateOne } = useUsers({ fetchItems: user?.rolesNames[0] === ROLE.ADMIN });
+  const { t } = useTranslation(['common']);
 
   const ProfileSchema = Yup.object().shape({
     fullName: Yup.string().max(255, 'Le champ est trop long.').required('Le champ est obligatoire'),
@@ -50,19 +52,19 @@ const MyProfile: NextPage = () => {
   return (
     <>
       <Box sx={{ marginBottom: 4, display: 'flex', justifyContent: 'center' }}>
-        <PageHeader title="Mon profil" />
+        <PageHeader title={t('topbar:my_profile')} />
       </Box>
       <Card sx={{ maxWidth: '500px', margin: 'auto' }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Grid container rowSpacing={3} columnSpacing={2} sx={{ padding: 5 }}>
             <Grid item xs={12}>
-              <RHFTextField name="fullName" label="Nom complet" />
+              <RHFTextField name="fullName" label={t('common:full_name')} />
             </Grid>
             <Grid item xs={12}>
-              <RHFTextField name="email" label="Email" />
+              <RHFTextField name="email" label={t('common:email')} />
             </Grid>
             <Grid item xs={12}>
-              <RHFTextField name="password" label="Changer le mot de passe" type="password" />
+              <RHFTextField name="password" label={t('common:change_password')} type="password" />
             </Grid>
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <LoadingButton
@@ -73,7 +75,7 @@ const MyProfile: NextPage = () => {
                 loadingPosition="start"
                 loading={isSubmitting}
               >
-                Mettre à jour mes données
+                {t('common:update_details')}
               </LoadingButton>
             </Grid>
           </Grid>
