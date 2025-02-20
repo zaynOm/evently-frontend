@@ -15,62 +15,29 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
 
     const PRIMARY_MAIN = theme.palette.primary.main;
 
-    const PRIMARY_DARK = theme.palette.primary.dark;
+    const _PRIMARY_DARK = theme.palette.primary.dark;
 
     // OR using local (public folder)
     // -------------------------------------------------------
-    // const logo = (
-    //   <Box
-    //     component="img"
-    //     src="/logo/logo_single.svg" => your path
-    //     sx={{ width: 40, height: 40, cursor: 'pointer', ...sx }}
-    //   />
-    // );
-
     const logo = (
       <Box
         ref={ref}
         component="div"
-        sx={{
-          width: 40,
-          height: 40,
-          display: 'inline-flex',
-          ...sx,
-        }}
+        sx={{ width: 170, height: 40, cursor: 'pointer', ...sx }}
         {...other}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
-          <defs>
-            <linearGradient id={`${id}1`} x1="100%" x2="50%" y1="9.946%" y2="50%">
-              <stop offset="0%" stopColor={PRIMARY_DARK} />
-              <stop offset="100%" stopColor={PRIMARY_MAIN} />
-            </linearGradient>
-
-            <linearGradient id={`${id}2`} x1="50%" x2="50%" y1="0%" y2="100%">
-              <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-              <stop offset="100%" stopColor={PRIMARY_MAIN} />
-            </linearGradient>
-
-            <linearGradient id={`${id}3`} x1="50%" x2="50%" y1="0%" y2="100%">
-              <stop offset="0%" stopColor={PRIMARY_LIGHT} />
-              <stop offset="100%" stopColor={PRIMARY_MAIN} />
-            </linearGradient>
-          </defs>
-
-          <g fill={PRIMARY_MAIN} fillRule="evenodd" stroke="none" strokeWidth="1">
-            <path
-              fill={`url(#${id}1)`}
-              d="M183.168 285.573l-2.918 5.298-2.973 5.363-2.846 5.095-2.274 4.043-2.186 3.857-2.506 4.383-1.6 2.774-2.294 3.939-1.099 1.869-1.416 2.388-1.025 1.713-1.317 2.18-.95 1.558-1.514 2.447-.866 1.38-.833 1.312-.802 1.246-.77 1.18-.739 1.111-.935 1.38-.664.956-.425.6-.41.572-.59.8-.376.497-.537.69-.171.214c-10.76 13.37-22.496 23.493-36.93 29.334-30.346 14.262-68.07 14.929-97.202-2.704l72.347-124.682 2.8-1.72c49.257-29.326 73.08 1.117 94.02 40.927z"
-            />
-            <path
-              fill={`url(#${id}2)`}
-              d="M444.31 229.726c-46.27-80.956-94.1-157.228-149.043-45.344-7.516 14.384-12.995 42.337-25.267 42.337v-.142c-12.272 0-17.75-27.953-25.265-42.337C189.79 72.356 141.96 148.628 95.69 229.584c-3.483 6.106-6.828 11.932-9.69 16.996 106.038-67.127 97.11 135.667 184 137.278V384c86.891-1.611 77.962-204.405 184-137.28-2.86-5.062-6.206-10.888-9.69-16.994"
-            />
-            <path
-              fill={`url(#${id}3)`}
-              d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
-            />
-          </g>
+        <svg
+          id={id}
+          width="100%"
+          height="100%"
+          viewBox="0 0 482 57"
+          fill={id === 'footer-logo' ? PRIMARY_LIGHT : PRIMARY_MAIN}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.680001 57V0.552H60.392V9.768H13.352V23.016H49.256V32.52H13.352V47.784H60.776L64.616 55.944C64.616 56.2 63.752 56.456 62.024 56.712C60.296 56.904 57.32 57 53.096 57H0.680001ZM94.704 57L67.92 0.647999H81.36L99.408 39.528L102 46.44H102.864L105.36 39.528L123.6 0.647999H136.656L135.12 6.408L110.064 57H94.704ZM145.787 57V0.552H205.5V9.768H158.459V23.016H194.364V32.52H158.459V47.784H205.884L209.724 55.944C209.724 56.2 208.86 56.456 207.132 56.712C205.404 56.904 202.428 57 198.204 57H145.787ZM220.708 57V8.232L219.748 0.552H233.572L266.212 34.728L269.956 39.912H271.012V0.552H283.684V57H271.492L238.084 22.248L234.34 17.736H233.38V57H220.708ZM318.816 57L318.72 9.672H293.76V0.455996H356.544V9.672H331.488V57H318.816ZM366.636 57L367.596 49.32V0.552H380.268V47.784H420.012L423.852 55.944C423.852 56.2 422.988 56.456 421.26 56.712C419.532 56.904 416.556 57 412.332 57H366.636ZM440.719 57V33.576L412.783 0.552H428.143L442.351 18.504L446.767 24.456H447.727L452.143 18.504L466.351 0.552H481.711L477.967 6.312L453.391 33.96V57H440.719Z"
+            fill={id === 'footer-logo' ? PRIMARY_LIGHT : PRIMARY_MAIN}
+          />
         </svg>
       </Box>
     );
