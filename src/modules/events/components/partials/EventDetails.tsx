@@ -117,7 +117,7 @@ const EventDetails = (props: IEventDetailsProps) => {
                                 : t('event:common:spots_left')
                             }`
                     }
-                    color={isFull ? 'error' : 'success'}
+                    color={isFull ? 'info' : 'default'}
                   />
                   <Stack spacing={1}>
                     {canJoin && (
