@@ -178,6 +178,7 @@ const ItemsTable = <Item, CreateOneInput, UpdateOneInput, Row extends CrudRow>(
 
   const refreshRows = () => {
     setRows((previous) => [...previous]);
+    readAll(page, pageSize);
   };
 
   return (
@@ -352,6 +353,7 @@ const RowActionCell = <Item, CreateOneInput, UpdateOneInput>(
                 'Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.',
                 () => {
                   deleteOne(id, { displayProgress: true, displaySuccess: true });
+                  refreshRows();
                 },
                 'Oui, supprimer',
                 'error'
