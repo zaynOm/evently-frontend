@@ -450,7 +450,7 @@ const Topbar = () => {
             <Logo id="responsive-topbar-logo" />
           </Box>
           {navItems.map((item, index) => {
-            if (item.label === 'Utilisateur') {
+            if (item.label === t('topbar:profile')) {
               return null;
             }
             return (
