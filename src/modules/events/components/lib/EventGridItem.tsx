@@ -78,7 +78,7 @@ const EventGridItem = (props: IEventGridProps) => {
           sx: {
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 2,
+            WebkitLineClamp: 1,
             overflow: 'hidden',
           },
         }}
@@ -111,7 +111,7 @@ const EventGridItem = (props: IEventGridProps) => {
           spacing={1}
           divider={<Divider orientation="vertical" flexItem />}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }} minWidth={110}>
             <CalendarToday fontSize="small" color="action" />
             <Typography variant="body2">{dayjs(event.date).format('MMM D, YYYY')}</Typography>
           </Box>
@@ -121,7 +121,17 @@ const EventGridItem = (props: IEventGridProps) => {
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <LocationOn fontSize="small" color="action" />
-            <Typography variant="body2">{event.location}</Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                display: '-webkit-box',
+                WebkitBoxOrient: 'vertical',
+                WebkitLineClamp: 1,
+                overflow: 'hidden',
+              }}
+            >
+              {event.location}
+            </Typography>
           </Box>
         </Stack>
       </CardContent>
