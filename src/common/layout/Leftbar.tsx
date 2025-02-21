@@ -152,9 +152,6 @@ const Leftbar = (props: LeftbarProps) => {
         >
           <Stack direction="row" alignItems="center">
             <Logo id="leftbar-logo" sx={{ marginRight: 2 }} />
-            <Typography variant="h6" sx={{ color: 'primary.main' }}>
-              {process.env.NEXT_PUBLIC_APP_TITLE}
-            </Typography>
           </Stack>
 
           <IconButton onClick={toggleLeftbar}>
